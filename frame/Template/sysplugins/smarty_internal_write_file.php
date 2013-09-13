@@ -54,7 +54,9 @@ class Smarty_Internal_Write_File {
          */
         if (Smarty::$_IS_WINDOWS) {
             // remove original file
-            @unlink($_filepath);
+        	if(file_exists($_filepath)){
+        		@unlink($_filepath);
+        	}
             // rename tmp file
             $success = @rename($_tmp_file, $_filepath);
         } else {
@@ -76,7 +78,9 @@ class Smarty_Internal_Write_File {
 
         if ($smarty->_file_perms !== null) {
             // set file permissions
-            chmod($_filepath, $smarty->_file_perms);
+            if(!SINAAPP){
+            	@chmod($_filepath, $smarty->_file_perms);
+            }
             umask($old_umask);
         }
         error_reporting($_error_reporting);

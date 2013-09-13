@@ -47,6 +47,9 @@ EOT;
 }
 //控制台输出
 function xprint($string){
+	if(SINAAPP){
+		return false;
+	}
 	static $of;
 	if(empty($of)){
 		$of=fopen(PL_PATH."/Debug/phpdebug.sql", "w+");

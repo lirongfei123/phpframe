@@ -29,6 +29,18 @@ abstract class Model{
 	private function defaultField(){
 		$this->currentfield=implode(",",$this->fields);
 	}
+	/**
+	 * 得到数据总数
+	 * @return multitype:unknown
+	 */
+	public function getSum(){
+		if(empty($this->currentfield)){
+			self::defaultField();
+		}
+		$sql="select $this->currentfield from $this->table $this->asql";
+		$result=$this->con->query($sql);
+		return $result->num_rows;
+	}
 	public function select(){
 		if(empty($this->currentfield)){
 			self::defaultField();

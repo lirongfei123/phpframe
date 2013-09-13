@@ -12,6 +12,7 @@ abstract class Action{
 			$this->smarty->compile_dir =APP_PATH."/Cache/complies";
 			$this->smarty->cache_dir =APP_PATH."/Cache/tpl";
 		}else{
+			memcache_init();
 			$this->smarty->compile_dir ="saemc://Cache/complies";
 			$this->smarty->cache_dir ="saemc://Cache/tpl";
 		}

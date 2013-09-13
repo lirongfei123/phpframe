@@ -1,2 +1,1 @@
-select id,message,time,user from chatmessage where time='1366773617988' 
-select id,message,time,user from chatmessage where id >6 
+insert into resume(ip,time,address) values('171.8.255.255',now(),'河南 郑州')
